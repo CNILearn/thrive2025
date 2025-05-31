@@ -9,9 +9,9 @@ Console.WriteLine();
 
 var monthlyBalance = GetBalanceByMonth(lines);
 Console.WriteLine("Monthly balance");
-foreach (var entry in monthlyBalance)
+foreach (var (month, amount) in monthlyBalance)
 {
-    Console.WriteLine($"{entry.Key:yyyy-MM}: {entry.Value:C2}");
+    Console.WriteLine($"{month:yyyy-MM}: {amount:C2}");
 }
 
 double GetBalance(string[] data)
