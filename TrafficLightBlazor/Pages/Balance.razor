@@ -4,12 +4,17 @@
 
 <PageTitle>Balance Calculator</PageTitle>
 
-<h1>Balance Calculator</h1>
+<h1>Balance Calculator with Pattern Matching</h1>
 
 <div class="container">
     <div class="row">
         <div class="col-md-6">
             <h3>Upload CSV File</h3>
+            <p class="text-muted">
+                Upload a CSV file with transaction data in format:<br/>
+                <code>MM/DD/YYYY, TYPE, DESCRIPTION, AMOUNT</code><br/>
+                where TYPE is DEPOSIT, WITHDRAW, or FEE.
+            </p>
             <div class="mb-3">
                 <label for="csvFile" class="form-label">Choose CSV file:</label>
                 <InputFile id="csvFile" OnChange="HandleFileSelection" class="form-control" accept=".csv" />
@@ -81,6 +86,18 @@
             </div>
         </div>
     }
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <h4>Pattern Matching Implementation</h4>
+            <p>This application demonstrates C# pattern matching using switch expressions to parse transaction data:</p>
+            <ul>
+                <li><strong>List patterns</strong> to match CSV field positions: <code>[_, "DEPOSIT", _, var amount]</code></li>
+                <li><strong>Guard clauses</strong> for date validation: <code>when DateOnly.TryParse(dateStr, out var date)</code></li>
+                <li><strong>Expression patterns</strong> for different transaction types</li>
+            </ul>
+        </div>
+    </div>
 </div>
 
 @code {
