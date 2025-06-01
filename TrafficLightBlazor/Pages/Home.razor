@@ -1,0 +1,147 @@
+﻿@page "/"
+@using TrafficLightBlazor.Models
+@using TrafficLightBlazor.Services
+@using static TrafficLightBlazor.Models.TrafficLightColor
+@implements IDisposable
+
+<PageTitle>Traffic Light - Slovenia</PageTitle>
+
+<h1>Traffic Light - Slovenia Sequence</h1>
+
+<div class="traffic-light-container">
+    <div class="traffic-light">
+        <div class="light red @(IsLightOn(Red) ? "on" : "off")"></div>
+        <div class="light amber @(IsLightOn(Amber) ? "on" : "off")"></div>
+        <div class="light green @(IsLightOn(Green) ? "on" : "off")"></div>
+    </div>
+</div>
+
+<div class="controls">
+    <button class="btn btn-success" @onclick="Start" disabled="@isRunning">Start</button>
+    <button class="btn btn-danger" @onclick="Stop" disabled="@(!isRunning)">Stop</button>
+</div>
+
+<div class="info">
+    <p><strong>Current State:</strong> @currentLight.Current</p>
+    <p><strong>Previous State:</strong> @currentLight.Previous</p>
+    <p><strong>Duration:</strong> @currentLight.Duration.TotalSeconds seconds</p>
+    <p><strong>Sequence:</strong> Green → Amber → Red → Red & Amber → Green</p>
+</div>
+
+<style>
+    .traffic-light-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+    }
+    
+    .traffic-light {
+        background: #2c2c2c;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .light {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 3px solid #444;
+        transition: all 0.3s ease;
+    }
+    
+    .light.red {
+        background: #333;
+    }
+    
+    .light.red.on {
+        background: #ff4444;
+        box-shadow: 0 0 20px #ff4444;
+    }
+    
+    .light.amber {
+        background: #333;
+    }
+    
+    .light.amber.on {
+        background: #ffaa00;
+        box-shadow: 0 0 20px #ffaa00;
+    }
+    
+    .light.green {
+        background: #333;
+    }
+    
+    .light.green.on {
+        background: #44ff44;
+        box-shadow: 0 0 20px #44ff44;
+    }
+    
+    .controls {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 20px 0;
+    }
+    
+    .info {
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 15px;
+        background: #f8f9fa;
+        border-radius: 8px;
+        border: 1px solid #dee2e6;
+    }
+    
+    .info p {
+        margin: 5px 0;
+    }
+</style>
+
+@code {
+    private TrafficLight currentLight = new(Green, Red, TimeSpan.FromSeconds(4));
+    private Timer? timer;
+    private bool isRunning = false;
+
+    private bool IsLightOn(TrafficLightColor color)
+    {
+        return currentLight.Current switch
+        {
+            RedAndAmber => color == Red || color == Amber,
+            var current => current == color
+        };
+    }
+
+    private void Start()
+    {
+        if (isRunning) return;
+        
+        isRunning = true;
+        timer = new Timer(NextState, null, TimeSpan.Zero, currentLight.Duration);
+    }
+
+    private void Stop()
+    {
+        isRunning = false;
+        timer?.Dispose();
+        timer = null;
+    }
+
+    private void NextState(object? state)
+    {
+        currentLight = TrafficLightService.NextLight(currentLight);
+        
+        // Update timer interval for next state
+        timer?.Change(currentLight.Duration, currentLight.Duration);
+        
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        timer?.Dispose();
+    }
+}
