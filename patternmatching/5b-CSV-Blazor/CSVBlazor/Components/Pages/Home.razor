@@ -1,6 +1,7 @@
-@page "/balance"
+﻿@page "/"
 @using TrafficLightBlazor.Services
 @inject BalanceService BalanceService
+@rendermode InteractiveServer
 
 <PageTitle>Balance Calculator</PageTitle>
 
@@ -11,15 +12,15 @@
         <div class="col-md-6">
             <h3>Upload CSV File</h3>
             <p class="text-muted">
-                Upload a CSV file with transaction data in format:<br/>
-                <code>MM/DD/YYYY, TYPE, DESCRIPTION, AMOUNT</code><br/>
+                Upload a CSV file with transaction data in format:<br />
+                <code>MM/DD/YYYY, TYPE, DESCRIPTION, AMOUNT</code><br />
                 where TYPE is DEPOSIT, WITHDRAW, or FEE.
             </p>
             <div class="mb-3">
                 <label for="csvFile" class="form-label">Choose CSV file:</label>
                 <InputFile id="csvFile" OnChange="HandleFileSelection" class="form-control" accept=".csv" />
             </div>
-            
+
             @if (!string.IsNullOrEmpty(errorMessage))
             {
                 <div class="alert alert-danger">@errorMessage</div>
@@ -114,7 +115,7 @@
         monthlyBalances = null;
 
         var file = e.File;
-        
+
         if (file != null)
         {
             if (file.Size > 1024 * 1024) // 1MB limit
