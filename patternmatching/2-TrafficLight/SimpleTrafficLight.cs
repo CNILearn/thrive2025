@@ -2,7 +2,6 @@ using static TrafficLightSample.TrafficLightColor;
 
 namespace TrafficLightSample;
 
-
 public static class SimpleTrafficLight
 {
     public static void Run()
@@ -17,12 +16,14 @@ public static class SimpleTrafficLight
         Console.WriteLine();
     }
 
-    private static TrafficLightColor NextLight(TrafficLightColor current) => current switch
-    {
-        Red => RedAndAmber,
-        RedAndAmber => Green,
-        Green => Amber,
-        Amber => Red,
-        _ => throw new ArgumentOutOfRangeException(nameof(current), current, null)
-    };
+    private static TrafficLightColor NextLight(
+        TrafficLightColor current) => 
+        current switch
+        {
+            Red => RedAndAmber,
+            RedAndAmber => Green,
+            Green => Amber,
+            Amber => Red,
+            _ => throw new ArgumentOutOfRangeException(nameof(current), current, null)
+        };
 }

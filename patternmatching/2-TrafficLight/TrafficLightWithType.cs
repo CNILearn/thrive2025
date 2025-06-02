@@ -7,7 +7,7 @@ public static class TrafficLightWithType
     public static async Task RunAsync()
     {
         Console.WriteLine("Traffic light with type");
-        TrafficLight currentLight = new TrafficLight(Red, Amber, TimeSpan.FromSeconds(1));
+        TrafficLight currentLight = new(Red, Amber, TimeSpan.FromSeconds(1));
         for (int i = 0; i < 30; i++)
         {
             currentLight = NextLight(currentLight);
@@ -34,7 +34,8 @@ public static class TrafficLightWithType
     }
 }
 
-public record struct TrafficLight(TrafficLightColor Current, TrafficLightColor Previous, TimeSpan Duration, int BlinkCount = 1)
+public readonly record struct TrafficLight(TrafficLightColor Current, TrafficLightColor Previous, TimeSpan Duration, int BlinkCount = 1)
 {
-    public override string ToString() => $"{Current} previous: {Previous}, duration: {Duration.TotalSeconds}s, blink count: {BlinkCount}";
+    public override readonly string ToString() => 
+        $"{Current} previous: {Previous}, duration: {Duration.TotalSeconds}s, blink count: {BlinkCount}";
 }

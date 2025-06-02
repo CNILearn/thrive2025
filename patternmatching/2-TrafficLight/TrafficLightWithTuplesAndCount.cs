@@ -2,7 +2,6 @@ using static TrafficLightSample.TrafficLightColor;
 
 namespace TrafficLightSample;
 
-
 public static class TrafficLightWithTuplesAndCount
 {
     public static void Run()
@@ -17,7 +16,6 @@ public static class TrafficLightWithTuplesAndCount
         }
         Console.WriteLine();
     }
-
 
     private static int _blinkCount = 0;
     private static (TrafficLightColor Current, TrafficLightColor Previous) NextLight(
