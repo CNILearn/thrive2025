@@ -7,7 +7,7 @@ if (value is int intValue1)
     Console.WriteLine($"1. Type pattern: {intValue1} is an int");
 
 // 2. Pattern Matching with Generic Types (since C# 7)
-object genericObj = new List<int>[1, 2, 3];
+object genericObj = new List<int>() { 1, 2, 3 };
 if (genericObj is List<int> intList)
     Console.WriteLine($"2. Generic type pattern: List<int> with count {intList.Count}");
 else if (genericObj is List<string> stringList)
