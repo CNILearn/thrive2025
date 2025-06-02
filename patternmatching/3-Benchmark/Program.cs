@@ -5,22 +5,22 @@ using BenchmarkDotNet.Running;
 
 var summary = BenchmarkRunner.Run<TestPatterns>();
 
-[SimpleJob(RuntimeMoniker.Net80, iterationCount: 10, baseline: true)]
-[SimpleJob(RuntimeMoniker.Net90, iterationCount: 10)]
-[SimpleJob(RuntimeMoniker.Net10_0, iterationCount: 10)]
+//[SimpleJob(RuntimeMoniker.Net80, baseline: true)]
+[SimpleJob(RuntimeMoniker.Net90, baseline: true)]
+[SimpleJob(RuntimeMoniker.Net10_0)]
 public class TestPatterns
 {
     [Params(2, 300, 301, 302, 303, 304, 399)]
     public short Value { get; set; }
 
     [Benchmark(Baseline = true)]
-    public bool Sample1() => Sample1(Value);
+    public bool NotAPattern() => Sample1(Value);
 
     [Benchmark] 
-    public bool Sample2() => Sample2(Value);
+    public bool IsOrPattern() => Sample2(Value);
 
     [Benchmark] 
-    public bool Sample3() => Sample3(Value);
+    public bool SwitchExpression() => Sample3(Value);
 
     private static bool Sample1(short version)
         => version == 0x0002

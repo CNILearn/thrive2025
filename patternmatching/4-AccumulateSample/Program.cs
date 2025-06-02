@@ -65,7 +65,9 @@ using System.Numerics;
 
 var summary = BenchmarkRunner.Run<BenchmarkAccumulate>();
 
+[SimpleJob(RuntimeMoniker.Net80)]
 [SimpleJob(RuntimeMoniker.Net90)]
+[SimpleJob(RuntimeMoniker.Net10_0)]
 [MemoryDiagnoser]
 public class BenchmarkAccumulate
 {
@@ -75,7 +77,7 @@ public class BenchmarkAccumulate
     public int AccumulateFor() => AccumulateFor(_data);
 
     [Benchmark()]
-    public int Accumulate() => Accumulate(_data);
+    public int AccumulateForeach() => Accumulate(_data);
 
     [Benchmark()]
     public int AccumulateGeneric() => AccumulateGeneric(_data);
