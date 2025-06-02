@@ -29,9 +29,15 @@ public class BalanceService
             string[] values = line.Split(", ");
             _ = values switch
             {
-                [var dateStr, "DEPOSIT", _, var amt] when DateOnly.TryParse(dateStr, out var date) => AddToMonth(date, double.Parse(amt)),
-                [var dateStr, "WITHDRAW", _, var amt] when DateOnly.TryParse(dateStr, out var date) => AddToMonth(date, -double.Parse(amt)),
-                [var dateStr, "FEE", var amt] when DateOnly.TryParse(dateStr, out var date) => AddToMonth(date, -double.Parse(amt)),
+                [var dateStr, "DEPOSIT", _, var amt] 
+                    when DateOnly.TryParse(dateStr, out var date) => 
+                        AddToMonth(date, double.Parse(amt)),
+                [var dateStr, "WITHDRAW", _, var amt] 
+                    when DateOnly.TryParse(dateStr, out var date) => 
+                        AddToMonth(date, -double.Parse(amt)),
+                [var dateStr, "FEE", var amt] 
+                    when DateOnly.TryParse(dateStr, out var date) => 
+                    AddToMonth(date, -double.Parse(amt)),
                 _ => false
             };
         }
