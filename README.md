@@ -6,7 +6,17 @@
 
 ## Pattern Matching with C#
 
-Pattern matching in C# is a powerful feature that allows developers to write more readable and concise code by checking a value against a pattern. In this session, you will learn how to leverage pattern matching to simplify complex conditional logic and improve code maintainability. We will cover various pattern matching techniques introduced in recent versions of C#, including type patterns, relational patterns, logical patterns, positional patterns, and list patterns. Through practical examples and hands-on exercises, you will gain a deep understanding of how to use pattern matching effectively in your C# applications. Whether you are new to pattern matching or looking to enhance your existing skills, this session will provide valuable insights and tips for mastering this feature.
+Pattern matching in C# is a powerful feature that allows developers to write more readable and concise code by checking a value against a pattern. In this session, you will learn how to leverage pattern matching to simplify complex conditional logic and improve code maintainability. We will cover various pattern matching techniques introduced in recent versions of C#, including type patterns, relational patterns, logical patterns, positional patterns, and list patterns. Through practical examples, you will gain a deep understanding of how to use pattern matching effectively in your C# applications. Whether you are new to pattern matching or looking to enhance your existing skills, this session will provide valuable insights and tips for mastering this feature.
+
+[Pattern Matching Slides](slides/PatternMatching2025.pdf)
+
+### Samples
+
+- All patterns
+- Traffic light with **switch expressions**, **tuple**, **property**, and **relational** pattern, and Blazor WASM
+- Benchmarks
+- Recursive invocations
+- Pattern matching with CSV files, using **list patterns**, and Blazor Server
 
 ## Exploring .NET Aspire: On-Premises and Azure Integration
 
