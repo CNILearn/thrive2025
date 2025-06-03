@@ -34,3 +34,13 @@ NET Aspire is Microsoft's comprehensive .NET cloud-ready stack designed to strea
 ## Logs, Metrics, Distributed Tracing, and OpenTelemetry
 
 Grafana? Prometheus? Application Insights? OpenTelemetry? In this session, we will explore how to implement logging, metrics, and distributed tracing in .NET applications for both on-premises and Azure Cloud Services. You will learn how to collect and analyze these data points using tools like Grafana and Prometheus, as well as Azure services such as Azure Monitor, Log Analytics, and Application Insights.
+
+[Telemetry slides](slides/Telemetry2025.pdf)
+
+### Samples
+
+- Logging
+- Metrics
+- Distributed tracing
+- .NET Aspire with Prometheus and Grafana
+- .NET Aspire with Azure Monitor and App Insights
