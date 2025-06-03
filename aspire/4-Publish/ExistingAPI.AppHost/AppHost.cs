@@ -1,20 +1,22 @@
 using Aspire.Hosting.Azure;
 
-#pragma warning disable ASPIREAZURE001 // Type or member is obsolete
+#pragma warning disable ASPIREAZURE001 // in preview
+#pragma warning disable ASPIRECOMPUTE001 // in preview
 
 var builder = DistributedApplication.CreateBuilder(args);
 
-// builder.AddAzureAppServiceEnvironment("appservice");
-builder.AddAzureEnvironment();
-// az deployment sub create --location westeurope --template-file main.bicep
+// az deployment group create --template-file container-apps.bicep
 
+// builder.AddAzureContainerAppEnvironment("container-apps");
+// builder.AddAzureAppServiceEnvironment("appservice");
 // builder.AddDockerComposeEnvironment("docker-compose");
-//builder.AddKubernetesEnvironment("k8s");
+builder.AddKubernetesEnvironment("k8s");
+
 
 var db = builder.AddPostgres("postgres")
-    .WithPgWeb()
-    .WithDataVolume("postgres-books-volume")
-    .AddDatabase("postgres-books-db");
+            .WithPgWeb()
+            .WithDataVolume("postgres-books-volume")
+            .AddDatabase("postgres-books-db");
 
 var api = builder.AddProject<Projects.ExistingAPI>("existingapi")
     .WithReference(db)

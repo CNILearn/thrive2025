@@ -1,0 +1,19 @@
+parameters:
+  existingapi:
+    port_http: "8080"
+    port_https: "8080"
+    existingapi_image: "existingapi:latest"
+secrets:
+  postgres:
+    POSTGRES_PASSWORD: ""
+config:
+  postgres:
+    POSTGRES_HOST_AUTH_METHOD: "scram-sha-256"
+    POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256 --auth-local=scram-sha-256"
+    POSTGRES_USER: "postgres"
+  existingapi:
+    ASPNETCORE_URLS: "http://+:$8080"
+    OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES: "true"
+    OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES: "true"
+    OTEL_DOTNET_EXPERIMENTAL_OTLP_RETRY: "in_memory"
+    ASPNETCORE_FORWARDEDHEADERS_ENABLED: "true"
