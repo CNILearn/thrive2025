@@ -1,0 +1,41 @@
+---
+apiVersion: "apps/v1"
+kind: "StatefulSet"
+metadata:
+  name: "postgres-statefulset"
+spec:
+  template:
+    metadata:
+      labels:
+        app: "aspire"
+        component: "postgres"
+    spec:
+      containers:
+        - image: "docker.io/library/postgres:17.4"
+          name: "postgres"
+          envFrom:
+            - configMapRef:
+                name: "postgres-config"
+            - secretRef:
+                name: "postgres-secrets"
+          ports:
+            - name: "tcp"
+              protocol: "TCP"
+              containerPort: "5432"
+          volumeMounts:
+            - name: "postgres-books-volume"
+              mountPath: "/var/lib/postgresql/data"
+          imagePullPolicy: "IfNotPresent"
+      volumes:
+        - name: "postgres-books-volume"
+          emptyDir: {}
+  selector:
+    matchLabels:
+      app: "aspire"
+      component: "postgres"
+  replicas: 1
+  persistentVolumeClaimRetentionPolicy: {}
+  updateStrategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: "RollingUpdate"
