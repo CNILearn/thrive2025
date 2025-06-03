@@ -22,6 +22,15 @@ Pattern matching in C# is a powerful feature that allows developers to write mor
 
 NET Aspire is Microsoft's comprehensive .NET cloud-ready stack designed to streamline the development and deployment of modern applications. In this 1-hour session, you will get an overview of how .NET Aspire can be used both on-premises and with Azure. We will explore the essential tools, components, and orchestration features provided by .NET Aspire, and demonstrate how to leverage them for efficient development workflows.
 
+[.NET Aspire Slides](slides/Aspire2025.pdf)
+
+### Samples
+
+- Kick-off .NET Aspire
+- Existing API with database
+- API extended with .NET Aspire
+- Deployment
+
 ## Logs, Metrics, Distributed Tracing, and OpenTelemetry
 
 Grafana? Prometheus? Application Insights? OpenTelemetry? In this session, we will explore how to implement logging, metrics, and distributed tracing in .NET applications for both on-premises and Azure Cloud Services. You will learn how to collect and analyze these data points using tools like Grafana and Prometheus, as well as Azure services such as Azure Monitor, Log Analytics, and Application Insights.
