@@ -4,6 +4,17 @@
 - Exploring .NET Aspire: On-Premises and Azure Integration, Jun, 3rd, 2025, 16:45 AM, Stil
 - Logs, Metrics, Distributed Tracing, and OpenTelemetry, Jun, 4th 2025, 13:45 AM, Kongresna dvorana
 
+## Links
+
+- [Christian Nagel's C# Blog](https://csharp.christiannagel.com)
+- [.NET Aspire GitHub Repo](https://github.com/dotnet/aspire)
+- [.NET Aspire Community Toolkit](https://github.com/communityToolkit/aspire)
+- [AWS Aspire integrations](https://github.com/aws/integrations-on-dotnet-aspire-for-aws)
+- [Pragmatic Microservices Repo](https://github.com/PacktPublishing/Pragmatic-Microservices-with-CSharp-and-Azure)
+- [Codebreaker App](https://blazor.codebreaker.app)
+- [Codebreaker GitHub Org](https://github.com/codebreakerapp/)
+- [Pragmatic Microservices - The Book](https://www.packtpub.com/en-us/product/pragmatic-microservices-with-c-and-azure-9781835088296)
+
 ## Pattern Matching with C#
 
 Pattern matching in C# is a powerful feature that allows developers to write more readable and concise code by checking a value against a pattern. In this session, you will learn how to leverage pattern matching to simplify complex conditional logic and improve code maintainability. We will cover various pattern matching techniques introduced in recent versions of C#, including type patterns, relational patterns, logical patterns, positional patterns, and list patterns. Through practical examples, you will gain a deep understanding of how to use pattern matching effectively in your C# applications. Whether you are new to pattern matching or looking to enhance your existing skills, this session will provide valuable insights and tips for mastering this feature.
