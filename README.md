@@ -53,5 +53,5 @@ Grafana? Prometheus? Application Insights? OpenTelemetry? In this session, we wi
 - Logging
 - Metrics
 - Distributed tracing
-- .NET Aspire with Prometheus and Grafana
-- .NET Aspire with Azure Monitor and App Insights
+- .NET Aspire with Prometheus and Grafana (see ch11 folder of https://github.com/PacktPublishing/Pragmatic-Microservices-with-CSharp-and-Azure)
+- .NET Aspire with Azure Monitor and App Insights (see ch11 folder of https://github.com/PacktPublishing/Pragmatic-Microservices-with-CSharp-and-Azure)
